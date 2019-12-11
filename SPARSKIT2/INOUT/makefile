@@ -1,5 +1,5 @@
 FFLAGS = 
-F77 = f77
+F77 = gfortran
 
 #F77 = cf77
 #FFLAGS = -Wf"-dp"
@@ -7,6 +7,11 @@ F77 = f77
 FILES1 = chkio.o
 FILES2 = hb2ps.o 
 FILES3 = hb2pic.o 
+
+ALL: chk.ex hb2ps.ex hb2pic.ex
+
+%.o : %.c
+	$(F77) $(FFLAGS) -o $@ -c $<
 
 chk.ex: $(FILES1) ../MATGEN/FDIF/functns.o ../libskit.a
 	$(F77) $(FFLAGS) -o chk.ex $(FILES1) ../MATGEN/FDIF/functns.o ../libskit.a
