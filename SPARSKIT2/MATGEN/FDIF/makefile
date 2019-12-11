@@ -1,8 +1,16 @@
-FFLAGS = 
-F77 = f77 
+ifdef ARCH
 
-#F77 = cf77
-#FFLAGS = -Wf"-dp"
+  include ../../make.$(ARCH)
+
+else
+  FFLAGS = 
+  F77 = gfortran
+endif
+
+ALL: gen5.ex genbl.ex
+
+%.o : %.f
+	$(F77) $(FFLAGS) -c $< -o $@
 
 FILES1 = rgen5pt.o functns.o 
 
@@ -14,7 +22,7 @@ genbl.ex:	$(FILES2)  ../../libskit.a
 	$(F77) $(FFLAGS) -o genbl.ex $(FILES2) ../../libskit.a 
 
 clean:
-	rm -f *.o *.ex core *.trace
+	rm -f *.o *.L *.LL *.ex core *.trace
 
 ../../libskit.a:
 	(cd ../..; $(MAKE) $(MAKEFLAGS) libskit.a)

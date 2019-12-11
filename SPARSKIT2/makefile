@@ -20,21 +20,22 @@
 # Last Updated:  Nov. 19, 2009 
 
 SHELL = /bin/sh
-F77 = gfortran
 
-# F77 = f77 
- AR = ar -rv 
- RANLIB = ranlib	
-##AR = ar -rcv 
-# OPT = -c 
-# OPT = -c -static -64 -mips4 -O3 -r10000
-OPT = -c -O -Wall 
+ifdef ARCH
+
+  include make.$(ARCH)
+
+else
+  F77 = gfortran
+  AR = ar -rv 
+  RANLIB = ranlib	
+  ##AR = ar -rcv 
+  # OPT = -c 
+  # OPT = -c -static -64 -mips4 -O3 -r10000
+  OPT = -c -O -Wall
+endif
+
 LIB = libskit.a
-
-# Cray options
-#F77 = cf77
-#AR = bld rv
-#OPT = -c -Wf"-dp" 
 
 #
 # library objects
@@ -94,7 +95,7 @@ clean:
 	@for dir in $(DIRS) ;\
           do \
           echo cleaning $$dir ;\
-          (cd $$dir; rm -f *~ *.o *.ex .,* fort.* ftn?? *.mat core) ;\
+          (cd $$dir; rm -f *~ *.o *.L *.LL *.ex .,* fort.* ftn?? *.mat core) ;\
           done
 
 tarit: 

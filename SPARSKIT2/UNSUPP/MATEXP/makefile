@@ -1,8 +1,11 @@
-FFLAGS = -O2
-F77 = gfortran
+ifdef ARCH
 
-#F77 = cf77
-#FFLAGS = -Wf"-dp"
+  include ../../make.$(ARCH)
+
+else
+  FFLAGS = -O2
+  F77 = gfortran
+endif
 
 FILES1 = rexp.o exppro.o 
 FILES2 = rphi.o phipro.o 
@@ -17,3 +20,7 @@ exp.ex:		$(FILES1)
 
 phi.ex:		$(FILES2)
 	$(F77) $(FFLAGS) $(FILES2) -o phi.ex  
+
+clean:
+	rm -f *.o *.L *.LL *.ex core *.trace
+

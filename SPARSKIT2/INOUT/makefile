@@ -1,8 +1,11 @@
-FFLAGS = 
-F77 = gfortran
+ifdef ARCH
 
-#F77 = cf77
-#FFLAGS = -Wf"-dp"
+  include ../make.$(ARCH)
+
+else
+  FFLAGS = 
+  F77 = gfortran
+endif
 
 FILES1 = chkio.o
 FILES2 = hb2ps.o 

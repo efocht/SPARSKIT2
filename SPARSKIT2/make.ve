@@ -1,0 +1,16 @@
+#
+# SX-Aurora TSUBASA Vector Engine (VE)
+# Compiler settings
+#
+
+F77 = nfort
+AR = nar -rv
+RANLIB = nranlib
+
+FTRACE = -ftrace
+FFLAGS = -O3 -report-all $(FTRACE)
+
+OPT = -c $(FFLAGS)
+
+
+

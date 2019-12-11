@@ -1,8 +1,11 @@
-FFLAGS = -O2
-F77 = gfortran
+ifdef ARCH
 
-#F77 = cf77
-#FFLAGS = -Wf"-dp"
+  include ../../make.$(ARCH)
+
+else
+  FFLAGS = -O2
+  F77 = gfortran
+endif
 
 FILES1 = rsobel.o
 FILES2 = rzlatev.o
@@ -23,7 +26,7 @@ markov.ex:	$(FILES3) ../../libskit.a
 	$(F77) $(FFLAGS) -o markov.ex $(FILES3)  ../../libskit.a 
 
 clean:
-	rm -f *.o *.ex core *.trace
+	rm -f *.o *.L *.LL *.ex core *.trace
 
 ../../libskit.a:
 	(cd ../..; $(MAKE) $(MAKEFLAGS) libskit.a)
