@@ -10,14 +10,14 @@ FILES3 = hb2pic.o
 
 ALL: chk.ex hb2ps.ex hb2pic.ex
 
-%.o : %.c
+%.o : %.f
 	$(F77) $(FFLAGS) -o $@ -c $<
 
 chk.ex: $(FILES1) ../MATGEN/FDIF/functns.o ../libskit.a
 	$(F77) $(FFLAGS) -o chk.ex $(FILES1) ../MATGEN/FDIF/functns.o ../libskit.a
 
-hb2ps.ex: $(FILES2) ../libskit32.a
-	$(F77) $(FFLAGS) -o hb2ps.ex $(FILES2) ../libskit32.a
+hb2ps.ex: $(FILES2) ../libskit.a
+	$(F77) $(FFLAGS) -o hb2ps.ex $(FILES2) ../libskit.a
 
 hb2pic.ex: $(FILES3) ../libskit.a
 	$(F77) $(FFLAGS) -o hb2pic.ex $(FILES3) ../libskit.a
