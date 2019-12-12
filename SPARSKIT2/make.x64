@@ -1,0 +1,11 @@
+#
+# Linux using gfortran
+# Compiler settings
+#
+
+F77 = gfortran
+AR = ar -rv
+RANLIB = ranlib
+
+FFLAGS = -O3 -Wall
+OPT = -c $(FFLAGS)
