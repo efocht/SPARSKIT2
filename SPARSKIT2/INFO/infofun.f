@@ -626,10 +626,10 @@ c     indiag = nonzero diagonal element indicator
       return
       end
 c-----------------------------------------------------------------------
-      subroutine avnz_col(n, ia, av, st)
+      subroutine avnz_col(n, ja, ia, av, st)
       implicit real*8 (a-h, o-z)
       real*8 av, st
-      integer n,  ia(n+1)
+      integer n,  ja(*), ia(n+1)
 c---------------------------------------------------------------------
 c     this routine computes average number of nonzero elements/column and
 c     standard deviation for this average
