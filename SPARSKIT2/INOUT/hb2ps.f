@@ -6,7 +6,7 @@ c where hb2ps is the executable generated from this program,
 c HB_file is a file containing a matrix stored in Harwell-Boeing
 c format and Postscript_file is a file to contain the post-script file. 
 c---------------------------------------------------------------------- 
-      parameter (nmax = 10000, nzmax = 100000)
+      parameter (nmax = 200000, nzmax = 8000000)
       integer ia(nmax+1),ja(nzmax), idummy(1), ptitle
       real*8  a(1),rhs(1)
       real size
