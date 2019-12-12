@@ -10,7 +10,7 @@ c To use with larger matrices, increase nmax and nzmax.
 c---------------------------------------------------------------------- 
       implicit none 
       integer nmax, nzmax
-      parameter (nmax = 30000, nzmax = 800000)
+      parameter (nmax = 200000, nzmax = 80000000)
       integer ia(nmax+1),ia1(nmax+1),ja(nzmax),ja1(nzmax) 
       real*8  a(nzmax),a1(nzmax),rhs(1)
       character title*72, type*3, key*8, guesol*2 
