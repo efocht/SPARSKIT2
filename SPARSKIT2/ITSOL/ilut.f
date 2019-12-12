@@ -2292,25 +2292,30 @@ c
 c-----------------------------------------------------------------------
 c local variables
 c
+        real*8 sum
         integer i,k
 c
 c forward solve
 c
-        do 40 i = 1, n
-           x(i) = y(i)
-           do 41 k=jlu(i),ju(i)-1
-              x(i) = x(i) - alu(k)* x(jlu(k))
- 41        continue
- 40     continue
+        do i = 1, n
+           sum = y(i)
+           !$NEC ivdep
+           do k=jlu(i),ju(i)-1
+              sum = sum - alu(k)* x(jlu(k))
+           enddo
+           x(i) = sum
+        end do
 c
 c     backward solve.
 c
-       do 90 i = n, 1, -1
-          do 91 k=ju(i),jlu(i+1)-1
-              x(i) = x(i) - alu(k)*x(jlu(k))
- 91          continue
-           x(i) = alu(i)*x(i)
- 90     continue
+        do i = n, 1, -1
+          sum = x(i) 
+          !$NEC ivdep
+          do k=ju(i),jlu(i+1)-1
+              sum = sum - alu(k)*x(jlu(k))
+          end do
+          x(i) = alu(i)*sum
+        end do
 c
          return
 c----------------end of lusol ------------------------------------------
