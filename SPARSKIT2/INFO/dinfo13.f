@@ -182,7 +182,7 @@ c
 	if (valued) job = 1
 	ipos = 1
         call csrcsc(n, job, ipos, a, ja, ia, ao, jao, iao)
-        call csrcsc(n, job, ipos, ao, jao, iao, a, ja, ia)
+        !call csrcsc(n, job, ipos, ao, jao, iao, a, ja, ia) !EF! a bug or just testing?
 c-------------------------------------------------------------------
 c computing max bandwith, max number of nonzero elements per column
 c min nonzero elements per column/row, row/column diagonal dominance 
