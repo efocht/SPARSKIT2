@@ -5,7 +5,7 @@
  The current directory ORDERINGS contains a few subroutines for
  finding some of the standard reorderings for a given matrix.
 
-levset.f -- level set based algorithms
+dsepart.f -- level set based algorithms
 
    dblstr   : doubled stripe partitioner 
    rdis     : recursive dissection partitioner
